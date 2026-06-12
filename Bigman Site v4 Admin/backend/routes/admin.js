@@ -2,19 +2,6 @@
 
 // ═══════════════════════════════════════════════════════════════
 // ADMIN ROUTES — All protected by protect + adminOnly middleware
-// GET    /api/admin/stats
-// GET    /api/admin/orders
-// GET    /api/admin/orders/:id
-// PUT    /api/admin/orders/:id
-// GET    /api/admin/users
-// GET    /api/admin/users/:id
-// PUT    /api/admin/users/:id
-// DELETE /api/admin/users/:id
-// GET    /api/admin/contacts
-// PUT    /api/admin/contacts/:id
-// DELETE /api/admin/contacts/:id
-// GET    /api/admin/newsletter
-// DELETE /api/admin/newsletter/:id
 // ═══════════════════════════════════════════════════════════════
 
 const express    = require('express');
@@ -51,7 +38,7 @@ router.get('/stats', async (req, res, next) => {
       Order.find().sort({ createdAt: -1 }).limit(5).select('orderNumber clientName workType status createdAt estimatedPrice')
     ]);
 
-    // Revenue estimate (sum of agreedPrice on paid/completed orders)
+    // Revenue estimate
     const revenueData = await Order.aggregate([
       { $match: { status: { $in: ['paid','completed'] }, agreedPrice: { $exists: true, $ne: null } } },
       { $group: { _id: null, total: { $sum: '$agreedPrice' } } }
@@ -164,7 +151,7 @@ router.put('/orders/:id', async (req, res, next) => {
     const order = await Order.findByIdAndUpdate(req.params.id, updates, { new: true });
     if (!order) return res.status(404).json({ success: false, message: 'Order not found.' });
 
-    // Notify client of status change if email is configured
+    // Notify client of status change
     if (req.body.status && req.body.notifyClient !== false) {
       const statusMessages = {
         'quoted':      'Your order has been reviewed and we have a price quote ready for you.',
@@ -252,7 +239,6 @@ router.put('/users/:id', async (req, res, next) => {
 
 router.delete('/users/:id', async (req, res, next) => {
   try {
-    // Soft delete — just deactivate
     const user = await User.findByIdAndUpdate(req.params.id, { isActive: false }, { new: true });
     if (!user) return res.status(404).json({ success: false, message: 'User not found.' });
     res.json({ success: true, message: 'User deactivated.' });
@@ -327,7 +313,6 @@ router.get('/newsletter', async (req, res, next) => {
   }
 });
 
-// Send newsletter broadcast
 router.post('/newsletter/broadcast', async (req, res, next) => {
   try {
     const { subject, html, testOnly, testEmail } = req.body;
@@ -340,7 +325,6 @@ router.post('/newsletter/broadcast', async (req, res, next) => {
       return res.json({ success: true, message: `Test email sent to ${testEmail}` });
     }
 
-    // Real broadcast
     const subscribers = await Newsletter.find({ isActive: true }).select('email');
     let sent = 0, failed = 0;
 
