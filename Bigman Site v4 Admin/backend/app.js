@@ -92,6 +92,7 @@ const globalLimiter = rateLimit({
   max:      parseInt(process.env.RATE_LIMIT_MAX || '200'),
   standardHeaders: true,
   legacyHeaders:   false,
+  keyGenerator:    (req) => req.headers['x-forwarded-for'] || req.ip || '127.0.0.1',
   message: { error: 'Too many requests, please try again later.' },
 });
 app.use('/api', globalLimiter);
@@ -102,6 +103,7 @@ const authLimiter = rateLimit({
   max:      parseInt(process.env.AUTH_RATE_LIMIT_MAX || '20'),
   standardHeaders: true,
   legacyHeaders:   false,
+  keyGenerator:    (req) => req.headers['x-forwarded-for'] || req.ip || '127.0.0.1',
   message: { error: 'Too many authentication attempts, please wait 15 minutes.' },
   skipSuccessfulRequests: true,
 });
