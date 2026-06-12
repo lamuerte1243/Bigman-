@@ -1,0 +1,61 @@
+# ═══════════════════════════════════════════════════════════════
+# BIGMAN ACADEMIC SERVICES — NETLIFY CONFIGURATION (REPO ROOT)
+# ═══════════════════════════════════════════════════════════════
+# The project lives in the "Bigman Site v4 Admin" subdirectory.
+# This root-level netlify.toml is required so Netlify picks it up
+# and does NOT run the UI-configured "npm install" build command.
+# ═══════════════════════════════════════════════════════════════
+
+[build]
+  # Install dependencies required by the Netlify Function (serverless Express backend)
+  command   = "npm install"
+  publish   = "Bigman Site v4 Admin"
+  functions = "Bigman Site v4 Admin/netlify/functions"
+
+# ── API redirect: all /api/* requests → Netlify Function
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
+  status = 200
+
+# ── SPA fallback: serve index.html for any unmatched routes
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Headers for security & CORS on static assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options          = "SAMEORIGIN"
+    X-Content-Type-Options   = "nosniff"
+    Referrer-Policy          = "strict-origin-when-cross-origin"
+    Permissions-Policy       = "camera=(), microphone=(), geolocation=()"
+
+# ── Cache static assets aggressively
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── No cache on HTML pages (so updates deploy immediately)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Netlify Functions config
+[functions]
+  node_bundler    = "esbuild"
+  included_files  = ["Bigman Site v4 Admin/backend/**"]
