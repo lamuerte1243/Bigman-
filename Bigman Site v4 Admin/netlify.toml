@@ -16,8 +16,8 @@
   # Netlify Functions directory
   functions = "netlify/functions"
 
-  # Install function dependencies from top-level package.json
-  command = "npm install"
+  # No build command needed — static HTML site
+  command = ""
 
 # ── Environment variables (set these in Netlify UI → Site Settings → Environment Variables)
 # Never commit real values here. These are EXAMPLES ONLY.
@@ -41,7 +41,8 @@
   from   = "/api/*"
   to     = "/.netlify/functions/api/api/:splat"
   status = 200
-  
+  force  = true
+
 # ── SPA fallback: serve index.html for any unmatched routes
 [[redirects]]
   from   = "/*"
@@ -84,4 +85,3 @@
   # Each function gets 10 seconds max execution time
   # Use "background" for async email-sending etc. if needed
   node_bundler = "esbuild"
-  included_files = ["backend/**"]
