@@ -16,8 +16,8 @@
   # Netlify Functions directory
   functions = "netlify/functions"
 
-  # No build command needed — static HTML site
-  command = ""
+  # Install function dependencies from top-level package.json
+  command = "npm install"
 
 # ── Environment variables (set these in Netlify UI → Site Settings → Environment Variables)
 # Never commit real values here. These are EXAMPLES ONLY.
