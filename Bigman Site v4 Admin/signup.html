@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Bigman Academic Services</title>
+  <meta name="description" content="Create your free Bigman Academic Services student account. Access exam prep, online course help, essays, and your personal academic dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       BIGMAN SIGN UP — Bold Blue Brand Design
+       ═══════════════════════════════════════════════════════════ */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP BAR ──────────────────────────────────────────────── */
+    .auth-topbar {
+      background: #194ba5;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .auth-topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .auth-topbar-logo-icon {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.18);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    .auth-topbar-logo-text .t-main {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .auth-topbar-logo-text .t-sub {
+      font-size: .68rem;
+      color: rgba(255,255,255,.65);
+      font-weight: 500;
+      display: block;
+      margin-top: 1px;
+    }
+
+    .auth-topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .auth-topbar-nav a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .auth-topbar-nav a:hover { color: #fff; }
+
+    .auth-topbar-nav .nav-signin {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+      font-size: .85rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: background .2s;
+    }
+
+    .auth-topbar-nav .nav-signin:hover { background: rgba(255,255,255,.28); }
+
+    /* ── BODY GRID ────────────────────────────────────────────── */
+    .auth-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 540px;
+    }
+
+    /* ── LEFT HERO ────────────────────────────────────────────── */
+    .auth-hero {
+      background: linear-gradient(155deg, #194ba5 0%, #0d2d6b 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      border: 80px solid rgba(255,255,255,.04);
+      top: -160px; right: -160px;
+    }
+
+    .auth-hero::after {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 60px solid rgba(255,255,255,.04);
+      bottom: -100px; left: -80px;
+    }
+
+    .auth-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      padding: 6px 16px;
+      color: rgba(255,255,255,.9);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      width: fit-content;
+      z-index: 1;
+      position: relative;
+    }
+
+    .auth-hero-eyebrow i { color: #f59e0b; }
+
+    .auth-hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0 0 20px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      z-index: 1;
+      position: relative;
+    }
+
+    .auth-hero h1 span { color: #f59e0b; }
+
+    .auth-hero p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 0 36px;
+      z-index: 1;
+      position: relative;
+    }
+
+    /* Steps */
+    .auth-steps {
+      z-index: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .auth-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-body h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 2px;
+    }
+
+    .step-body p {
+      font-size: .78rem;
+      color: rgba(255,255,255,.6);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Trust badges */
+    .auth-badges {
+      z-index: 1;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .auth-badge-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: 6px 14px;
+      color: rgba(255,255,255,.88);
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    .auth-badge-pill i { color: #f59e0b; font-size: .7rem; }
+
+    /* ── RIGHT FORM PANEL ─────────────────────────────────────── */
+    .auth-form-panel {
+      background: #fff;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 44px;
+      overflow-y: auto;
+    }
+
+    [data-theme="dark"] .auth-form-panel { background: #151928; }
+
+    .auth-form-wrap {
+      width: 100%;
+      max-width: 440px;
+      padding-top: 8px;
+    }
+
+    .auth-form-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #194ba5;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+
+    [data-theme="dark"] .auth-form-title { color: #7aa8f0; }
+
+    .auth-form-sub {
+      font-size: .9rem;
+      color: var(--text-secondary);
+      margin: 0 0 28px;
+    }
+
+    .auth-form-sub a { color: #194ba5; font-weight: 700; text-decoration: none; }
+    .auth-form-sub a:hover { text-decoration: underline; }
+
+    /* Fields */
+    .auth-field { margin-bottom: 18px; }
+
+    .auth-field label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 7px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .auth-field-wrap { position: relative; }
+
+    .auth-field-wrap .f-icon {
+      position: absolute;
+      left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: .85rem;
+      pointer-events: none;
+    }
+
+    .auth-field input,
+    .auth-field select {
+      width: 100%;
+      padding: 12px 44px 12px 42px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      background: #f8f9fc;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: .92rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+      appearance: none;
+    }
+
+    .auth-field input:focus,
+    .auth-field select:focus {
+      border-color: #194ba5;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(25,75,165,.12);
+    }
+
+    .auth-field input::placeholder { color: #94a3b8; }
+
+    [data-theme="dark"] .auth-field input,
+    [data-theme="dark"] .auth-field select {
+      background: #1e2640;
+      border-color: #2d3a60;
+      color: #f1f5f9;
+    }
+
+    [data-theme="dark"] .auth-field input:focus,
+    [data-theme="dark"] .auth-field select:focus {
+      border-color: #4d7ec5;
+      background: #1e2640;
+    }
+
+    .select-chevron {
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: .72rem;
+      pointer-events: none;
+    }
+
+    .toggle-pwd {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: #94a3b8; font-size: .85rem; padding: 0;
+      transition: color .2s;
+    }
+
+    .toggle-pwd:hover { color: #194ba5; }
+
+    /* Two-col */
+    .fields-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 500px) { .fields-2col { grid-template-columns: 1fr; } }
+
+    /* Password strength */
+    .pw-strength { margin-top: 7px; }
+
+    .strength-bar {
+      height: 4px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: all .3s ease;
+    }
+
+    .strength-lbl { font-size: .72rem; font-weight: 600; color: #94a3b8; }
+
+    /* Terms */
+    .auth-terms {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .82rem; color: var(--text-secondary);
+      margin-bottom: 20px; line-height: 1.5;
+    }
+
+    .auth-terms input[type="checkbox"] {
+      width: 16px; height: 16px; accent-color: #194ba5;
+      margin-top: 2px; flex-shrink: 0; cursor: pointer;
+    }
+
+    .auth-terms a { color: #194ba5; font-weight: 600; text-decoration: none; }
+    .auth-terms a:hover { text-decoration: underline; }
+
+    /* Submit */
+    .auth-submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: #194ba5;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      margin-bottom: 20px;
+    }
+
+    .auth-submit-btn:hover {
+      background: #123a87;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(25,75,165,.35);
+    }
+
+    .auth-submit-btn:active { transform: translateY(0); }
+
+    .auth-submit-btn .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+
+    .auth-submit-btn.loading .spinner { display: block; }
+    .auth-submit-btn.loading .btn-lbl { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Divider */
+    .auth-or {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0 0 18px; color: #94a3b8; font-size: .78rem;
+    }
+
+    .auth-or::before, .auth-or::after {
+      content: ''; flex: 1; height: 1px; background: #e2e8f0;
+    }
+
+    [data-theme="dark"] .auth-or::before,
+    [data-theme="dark"] .auth-or::after { background: #2d3a60; }
+
+    /* Instagram CTA */
+    .auth-insta-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 22px;
+      transition: opacity .2s, transform .15s;
+      text-decoration: none;
+    }
+
+    .auth-insta-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* Message */
+    .auth-msg {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: .87rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .auth-msg.error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; display: flex; }
+    .auth-msg.success { background: #dcfce7; color: #166534; border: 1px solid #86efac; display: flex; }
+
+    [data-theme="dark"] .auth-msg.error { background: #3b0a0a; color: #fca5a5; }
+    [data-theme="dark"] .auth-msg.success { background: #052e16; color: #86efac; }
+
+    /* Footer note */
+    .auth-footer-note {
+      text-align: center; font-size: .76rem;
+      color: #94a3b8; line-height: 1.7;
+    }
+
+    .auth-footer-note a { color: #194ba5; font-weight: 600; text-decoration: none; }
+    .auth-footer-note a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .auth-body { grid-template-columns: 1fr; }
+      .auth-hero { display: none; }
+      .auth-form-panel { padding: 40px 24px; min-height: calc(100vh - 64px); }
+    }
+
+    @media (max-width: 480px) {
+      .auth-topbar { padding: 0 20px; }
+      .auth-topbar-nav a:not(.nav-signin) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR ─────────────────────────────────────────────── -->
+<div class="auth-topbar">
+  <a href="index.html" class="auth-topbar-logo">
+    <div class="auth-topbar-logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="auth-topbar-logo-text">
+      <span class="t-main">Bigman</span>
+      <span class="t-sub">Academic Services</span>
+    </div>
+  </a>
+  <nav class="auth-topbar-nav">
+    <a href="courses.html">Exams &amp; Courses</a>
+    <a href="expert-help.html">Expert Help</a>
+    <a href="login.html" class="nav-signin">Sign In</a>
+  </nav>
+</div>
+
+<!-- ── MAIN ────────────────────────────────────────────────── -->
+<div class="auth-wrapper">
+  <div class="auth-body">
+
+    <!-- ── LEFT HERO ────────────────────────────────────────── -->
+    <div class="auth-hero">
+      <div class="auth-hero-eyebrow">
+        <i class="fas fa-bolt"></i> Get Started in Under 2 Minutes
+      </div>
+
+      <h1>Join <span>Bigman</span><br>Academic Services</h1>
+
+      <p>Create your free account and get immediate access to expert help for GED, TEAS, HESI, GRE, NCLEX, ACCUPLACER, online courses, essays, and full class takeovers.</p>
+
+      <div class="auth-steps">
+        <div class="auth-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Create Your Account</h4>
+            <p>Takes less than 2 minutes — completely free.</p>
+          </div>
+        </div>
+        <div class="auth-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Tell Us What You Need</h4>
+            <p>Exam prep, online course, essay, or full class takeover.</p>
+          </div>
+        </div>
+        <div class="auth-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Get Matched to an Expert</h4>
+            <p>We assign a qualified specialist to your exact needs.</p>
+          </div>
+        </div>
+        <div class="auth-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Sit Back &amp; Get Results</h4>
+            <p>We handle it — you get the grade. Guaranteed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-badges">
+        <div class="auth-badge-pill"><i class="fas fa-shield-alt"></i> 100% Confidential</div>
+        <div class="auth-badge-pill"><i class="fas fa-lock"></i> No Credit Card Needed</div>
+        <div class="auth-badge-pill"><i class="fas fa-star"></i> Pass Guaranteed</div>
+        <div class="auth-badge-pill"><i class="fas fa-users"></i> 10,000+ Students</div>
+      </div>
+    </div>
+
+    <!-- ── RIGHT FORM PANEL ──────────────────────────────────── -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrap">
+
+        <h1 class="auth-form-title">Create Account</h1>
+        <p class="auth-form-sub">Already have an account? <a href="login.html">Sign in here →</a></p>
+
+        <!-- Auth message -->
+        <div class="auth-msg" id="authMsg">
+          <i class="fas fa-circle-exclamation"></i>
+          <span id="authMsgText"></span>
+        </div>
+
+        <!-- Signup form -->
+        <form id="signupForm" novalidate>
+
+          <div class="fields-2col">
+            <div class="auth-field">
+              <label for="firstName">First Name</label>
+              <div class="auth-field-wrap">
+                <i class="f-icon fas fa-user"></i>
+                <input type="text" id="firstName" placeholder="John" autocomplete="given-name" required />
+              </div>
+            </div>
+            <div class="auth-field">
+              <label for="lastName">Last Name</label>
+              <div class="auth-field-wrap">
+                <i class="f-icon fas fa-user"></i>
+                <input type="text" id="lastName" placeholder="Doe" autocomplete="family-name" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="signupEmail">Email Address</label>
+            <div class="auth-field-wrap">
+              <i class="f-icon fas fa-envelope"></i>
+              <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="serviceNeeded">What Do You Need Help With?</label>
+            <div class="auth-field-wrap">
+              <i class="f-icon fas fa-list-check"></i>
+              <select id="serviceNeeded" required>
+                <option value="" disabled selected>Select a service…</option>
+                <optgroup label="Exams">
+                  <option value="ged">GED Exam</option>
+                  <option value="teas">TEAS Exam</option>
+                  <option value="hesi">HESI A2 Exam</option>
+                  <option value="gre">GRE Exam</option>
+                  <option value="nclex">NCLEX-RN / NCLEX-PN</option>
+                  <option value="accuplacer">ACCUPLACER</option>
+                </optgroup>
+                <optgroup label="Online Courses &amp; Classes">
+                  <option value="straighterline">StraighterLine Courses</option>
+                  <option value="sophia">Sophia Learning</option>
+                  <option value="studydotcom">Study.com</option>
+                  <option value="excelsior">Excelsior University</option>
+                  <option value="full-class">Full Online Class Takeover</option>
+                </optgroup>
+                <optgroup label="Writing">
+                  <option value="essays">Essays &amp; Assignments</option>
+                  <option value="dissertation">Dissertations &amp; Research Papers</option>
+                  <option value="discussion">Discussion Posts</option>
+                </optgroup>
+                <option value="other">Other / Not Listed</option>
+              </select>
+              <i class="select-chevron fas fa-chevron-down"></i>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="signupPassword">Password</label>
+            <div class="auth-field-wrap">
+              <i class="f-icon fas fa-lock"></i>
+              <input type="password" id="signupPassword" placeholder="Create a strong password (min 8 chars)" autocomplete="new-password" required oninput="checkStrength(this.value)" />
+              <button type="button" class="toggle-pwd" onclick="togglePwd('signupPassword',this)" aria-label="Toggle password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div class="pw-strength">
+              <div class="strength-bar"><div class="strength-fill" id="sFill"></div></div>
+              <span class="strength-lbl" id="sLbl">Enter a password</span>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="auth-field-wrap">
+              <i class="f-icon fas fa-lock"></i>
+              <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required />
+              <button type="button" class="toggle-pwd" onclick="togglePwd('confirmPassword',this)" aria-label="Toggle confirm password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <label class="auth-terms">
+            <input type="checkbox" id="termsCheck" required />
+            <span>I agree to Bigman's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, and confirm that I am 18 or older.</span>
+          </label>
+
+          <button type="submit" class="auth-submit-btn" id="signupBtn">
+            <div class="spinner"></div>
+            <span class="btn-lbl"><i class="fas fa-user-plus"></i> Create My Account</span>
+          </button>
+
+        </form>
+
+        <div class="auth-or">or connect directly</div>
+
+        <a href="https://www.instagram.com/bigman_academic_services" target="_blank" rel="noopener" class="auth-insta-btn">
+          <i class="fab fa-instagram"></i> Message @bigman_academic_services
+        </a>
+
+        <p class="auth-footer-note">
+          Your details are 100% confidential and never shared.<br/>
+          Questions? <a href="index.html#contact">Contact our support team</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* ── Toggle password ───────────────────────────────────────── */
+  function togglePwd(id, btn) {
+    const inp = document.getElementById(id);
+    const show = inp.type === 'password';
+    inp.type = show ? 'text' : 'password';
+    btn.querySelector('i').className = show ? 'fas fa-eye-slash' : 'fas fa-eye';
+  }
+
+  /* ── Password strength ─────────────────────────────────────── */
+  function checkStrength(pw) {
+    const fill  = document.getElementById('sFill');
+    const label = document.getElementById('sLbl');
+    let score = 0;
+    if (pw.length >= 8)          score++;
+    if (/[A-Z]/.test(pw))        score++;
+    if (/[0-9]/.test(pw))        score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+
+    const levels = [
+      { pct: '0%',   color: 'transparent', text: 'Enter a password' },
+      { pct: '25%',  color: '#ef4444',     text: 'Weak' },
+      { pct: '50%',  color: '#f59e0b',     text: 'Fair' },
+      { pct: '75%',  color: '#3b82f6',     text: 'Good' },
+      { pct: '100%', color: '#22c55e',     text: 'Strong ✓' },
+    ];
+
+    const lvl = pw.length === 0 ? levels[0] : levels[Math.min(score, 4)];
+    fill.style.width      = lvl.pct;
+    fill.style.background = lvl.color;
+    label.textContent     = lvl.text;
+    label.style.color     = lvl.color === 'transparent' ? '#94a3b8' : lvl.color;
+  }
+
+  /* ── Show message ──────────────────────────────────────────── */
+  function showMsg(type, text) {
+    const el  = document.getElementById('authMsg');
+    const txt = document.getElementById('authMsgText');
+    el.className = 'auth-msg ' + type;
+    el.querySelector('i').className = type === 'error' ? 'fas fa-circle-exclamation' : 'fas fa-circle-check';
+    txt.textContent = text;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ── Signup submit — real API call ────────────────────────── */
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const firstName   = document.getElementById('firstName').value.trim();
+    const lastName    = document.getElementById('lastName').value.trim();
+    const email       = document.getElementById('signupEmail').value.trim();
+    const service     = document.getElementById('serviceNeeded').value;
+    const password    = document.getElementById('signupPassword').value;
+    const confirmPwd  = document.getElementById('confirmPassword').value;
+    const termsCheck  = document.getElementById('termsCheck').checked;
+    const btn         = document.getElementById('signupBtn');
+
+    // ── Client-side validation ─────────────────────────────────
+    if (!firstName || !lastName) { showMsg('error', 'Please enter your first and last name.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('error', 'Please enter a valid email address.'); return; }
+    if (!service) { showMsg('error', 'Please select the service you need help with.'); return; }
+    if (password.length < 8) { showMsg('error', 'Password must be at least 8 characters long.'); return; }
+    if (password !== confirmPwd) { showMsg('error', 'Passwords do not match. Please try again.'); return; }
+    if (!termsCheck) { showMsg('error', 'Please accept the Terms of Service to continue.'); return; }
+
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      // ── Call real signup API ─────────────────────────────────
+      const data = await API.auth.signup({
+        firstName,
+        lastName,
+        email,
+        password,
+        serviceNeeded: service
+      });
+
+      showMsg('success', `Welcome, ${data.user.firstName}! Account created. Redirecting to your dashboard…`);
+
+      // Redirect to dashboard (or wherever the ?redirect param says)
+      const redirect = new URLSearchParams(window.location.search).get('redirect') || 'dashboard.html';
+      setTimeout(() => { window.location.href = redirect; }, 1400);
+
+    } catch (err) {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+
+      // Handle field-level validation errors from the API (422)
+      if (err.errors && Array.isArray(err.errors)) {
+        const msgs = err.errors.map(e => e.msg).join(' ');
+        showMsg('error', msgs);
+      } else if (err.message && err.message.toLowerCase().includes('already')) {
+        showMsg('error', 'An account with this email already exists. <a href="login.html" style="color:#b91c1c;font-weight:700;">Sign in instead →</a>');
+        document.getElementById('authMsgText').innerHTML = 'An account with this email already exists. <a href="login.html" style="color:#b91c1c;font-weight:700;">Sign in instead →</a>';
+      } else {
+        showMsg('error', err.message || 'Sign up failed. Please try again.');
+      }
+    }
+  });
+</script>
+</body>
+</html>

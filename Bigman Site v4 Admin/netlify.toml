@@ -1,0 +1,87 @@
+# ═══════════════════════════════════════════════════════════════
+# BIGMAN ACADEMIC SERVICES — NETLIFY CONFIGURATION
+# ═══════════════════════════════════════════════════════════════
+# This file configures Netlify for PREVIEW/STAGING deployment.
+# Static HTML is served by Netlify CDN.
+# All /api/* requests are proxied to the Netlify Serverless Function.
+#
+# For PRODUCTION: run the backend on a VPS with PM2 + Nginx.
+# See BACKEND_SETUP.md for full instructions.
+# ═══════════════════════════════════════════════════════════════
+
+[build]
+  # Root of the static site (all HTML, CSS, JS files are at root)
+  publish = "."
+
+  # Netlify Functions directory
+  functions = "netlify/functions"
+
+  # No build command needed — static HTML site
+  command = ""
+
+# ── Environment variables (set these in Netlify UI → Site Settings → Environment Variables)
+# Never commit real values here. These are EXAMPLES ONLY.
+# [build.environment]
+#   NODE_ENV = "production"
+#   MONGO_URI = "set_in_netlify_ui"
+#   JWT_SECRET = "set_in_netlify_ui"
+#   JWT_REFRESH_SECRET = "set_in_netlify_ui"
+#   JWT_EXPIRES_IN = "15m"
+#   JWT_REFRESH_EXPIRES_IN = "7d"
+#   SMTP_HOST = "set_in_netlify_ui"
+#   SMTP_PORT = "587"
+#   SMTP_USER = "set_in_netlify_ui"
+#   SMTP_PASS = "set_in_netlify_ui"
+#   EMAIL_FROM = "set_in_netlify_ui"
+#   ADMIN_EMAIL = "set_in_netlify_ui"
+#   FRONTEND_URL = "https://your-netlify-site.netlify.app"
+
+# ── API redirect: all /api/* requests → Netlify Function
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
+  status = 200
+
+# ── SPA fallback: serve index.html for any unmatched routes
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Headers for security & CORS on static assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ── Cache static assets aggressively
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── No cache on HTML pages (so updates deploy immediately)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Netlify Functions config
+[functions]
+  # Each function gets 10 seconds max execution time
+  # Use "background" for async email-sending etc. if needed
+  node_bundler = "esbuild"
+  included_files = ["backend/**"]

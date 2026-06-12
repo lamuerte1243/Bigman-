@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order an Essay | Bigman Academic Services</title>
+  <meta name="description" content="Order a custom essay, research paper, dissertation chapter, or discussion post from Bigman Academic Services. Fast turnaround, expert writers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <style>
+    /* ── ORDER PAGE LAYOUT ─────────────────────────────────────── */
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .order-layout { grid-template-columns: 1fr; }
+      .order-sidebar { order: -1; }
+    }
+
+    /* ── ORDER FORM CARD ───────────────────────────────────────── */
+    .order-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 600px) {
+      .order-card { padding: 28px 20px; }
+    }
+
+    .order-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: .02em;
+    }
+
+    .order-card-sub {
+      color: var(--text-secondary);
+      font-size: .93rem;
+      margin-bottom: 36px;
+    }
+
+    /* Section headers inside form */
+    .form-section-label {
+      font-family: var(--font-heading);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 18px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .form-section-label:first-of-type { margin-top: 0; }
+
+    /* Field groups */
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: .87rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .field-group label span.req {
+      color: var(--danger);
+      margin-left: 2px;
+    }
+
+    .field-group label span.hint {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: .78rem;
+      margin-left: 6px;
+    }
+
+    .field-wrap {
+      position: relative;
+    }
+
+    .field-wrap i.f-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: .85rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: .93rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .field-group textarea {
+      padding-left: 14px;
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.6;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(25,75,165,.12);
+    }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .field-group select { appearance: none; cursor: pointer; }
+
+    .field-wrap .select-arrow {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--text-muted);
+      font-size: .75rem;
+    }
+
+    /* No icon padding override for textarea */
+    .field-group textarea.no-icon {
+      padding-left: 14px;
+    }
+
+    /* Two column grid */
+    .fields-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .fields-2col { grid-template-columns: 1fr; }
+    }
+
+    /* Word count stepper */
+    .wc-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: border-color var(--transition);
+    }
+
+    .wc-stepper:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(25,75,165,.12);
+    }
+
+    .wc-btn {
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: var(--bg-alt);
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .wc-btn:hover { background: var(--primary-light); }
+
+    .wc-input {
+      flex: 1;
+      border: none !important;
+      outline: none !important;
+      text-align: center;
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--text-primary);
+      background: transparent;
+      box-shadow: none !important;
+      padding: 10px 8px !important;
+    }
+
+    .wc-unit {
+      font-size: .75rem;
+      color: var(--text-muted);
+      padding-right: 12px;
+      white-space: nowrap;
+    }
+
+    /* Price estimate chip */
+    .price-estimate {
+      background: var(--primary-light);
+      border: 1px solid rgba(25,75,165,.18);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 12px;
+    }
+
+    .price-estimate p {
+      font-size: .85rem;
+      color: var(--primary);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .price-estimate .price-val {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .price-estimate .price-note {
+      font-size: .72rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Deadline options (radio pills) */
+    .deadline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .deadline-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .deadline-option {
+      position: relative;
+    }
+
+    .deadline-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .deadline-option label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-align: center;
+      background: var(--bg-card);
+    }
+
+    .deadline-option label .dl-time {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .deadline-option label .dl-note {
+      font-size: .7rem;
+      color: var(--text-muted);
+    }
+
+    .deadline-option label .dl-badge {
+      font-size: .65rem;
+      font-weight: 700;
+      background: var(--danger);
+      color: #fff;
+      border-radius: 999px;
+      padding: 1px 7px;
+      margin-top: 4px;
+    }
+
+    .deadline-option input[type="radio"]:checked + label {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .deadline-option input[type="radio"]:checked + label .dl-time { color: var(--primary); }
+
+    .deadline-option label:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* Contact method selector */
+    .contact-methods {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-method {
+      position: relative;
+    }
+
+    .contact-method input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .contact-method label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-size: .87rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+    }
+
+    .contact-method input[type="radio"]:checked + label {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .contact-method label:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Submit button */
+    .order-submit-btn {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .order-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(25,75,165,.35);
+    }
+
+    .order-submit-btn:active { transform: translateY(0); }
+
+    .order-submit-btn .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+
+    .order-submit-btn.loading .spinner { display: block; }
+    .order-submit-btn.loading .btn-label { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Form message */
+    .form-message {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .form-message.error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; display: flex; }
+    .form-message.success { background: #dcfce7; color: #166534; border: 1px solid #86efac; display: flex; }
+
+    /* ── SIDEBAR ───────────────────────────────────────────────── */
+    .order-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      letter-spacing: .03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-card h3 i {
+      color: var(--primary);
+      font-size: .95rem;
+    }
+
+    /* How it works steps */
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .how-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .step-text p {
+      font-size: .78rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Guarantees list */
+    .guarantee-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .85rem;
+      color: var(--text-secondary);
+    }
+
+    .guarantee-item i {
+      color: var(--success);
+      width: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Instagram CTA card */
+    .insta-cta-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .insta-cta-card i.insta-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .insta-cta-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: .04em;
+    }
+
+    .insta-cta-card p {
+      font-size: .83rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .insta-cta-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--primary);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: .88rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .insta-cta-card a:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Subjects quick select pills */
+    .subject-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .subject-pill {
+      padding: 5px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: .77rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+      background: var(--bg-card);
+    }
+
+    .subject-pill:hover,
+    .subject-pill.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Success overlay */
+    .success-overlay {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .success-overlay.show { display: block; }
+
+    .success-icon-wrap {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: #dcfce7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .success-icon-wrap i {
+      font-size: 2rem;
+      color: #22c55e;
+    }
+
+    .success-overlay h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .success-overlay p {
+      color: var(--text-secondary);
+      font-size: .93rem;
+      line-height: 1.65;
+      max-width: 460px;
+      margin: 0 auto 28px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header-placeholder"></div>
+
+<main class="page-content">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-shapes" aria-hidden="true">
+      <div class="ph-circle ph-circle-1"></div>
+      <div class="ph-circle ph-circle-2"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <div class="page-hero-icon"><i class="fas fa-pen-fancy"></i></div>
+      <h1>Order an <span>Essay or Assignment</span></h1>
+      <p>Expert writers ready to handle your essays, research papers, discussion posts, and dissertations. Fill in the form below and we'll get back to you within minutes.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="expert-help.html">Expert Help</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Order Essay</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Form Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="order-layout">
+
+        <!-- ── LEFT: ORDER FORM ──────────────────────────────── -->
+        <div class="order-card">
+
+          <!-- Success State (hidden by default) -->
+          <div class="success-overlay" id="successOverlay">
+            <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
+            <h2>Order Received!</h2>
+            <div id="successOrderNumberWrap" style="display:none;margin-bottom:14px;">
+              <span style="display:inline-block;background:#f0f7ff;border:1.5px solid #194ba5;border-radius:8px;padding:8px 22px;font-family:'Oswald',sans-serif;font-size:1.1rem;color:#194ba5;letter-spacing:.06em;font-weight:700;">
+                Order #<span id="successOrderNumber"></span>
+              </span>
+            </div>
+            <p>Thank you! Your order has been submitted and our team will contact you via your preferred method within <strong>15 minutes</strong> to confirm pricing. Check your email for a confirmation.</p>
+            <p>For the fastest response, message us directly on Instagram:</p>
+            <a href="https://www.instagram.com/bigman_academic_services" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;">
+              <i class="fab fa-instagram"></i> @bigman_academic_services
+            </a><br/>
+            <a href="index.html" style="color:var(--primary);font-weight:600;font-size:.88rem;text-decoration:none;">← Back to Home</a>
+          </div>
+
+          <!-- Form (shown by default) -->
+          <div id="orderFormWrap">
+            <h2 class="order-card-title">Place Your Order</h2>
+            <p class="order-card-sub">Complete the form below — all fields marked <span style="color:var(--danger);">*</span> are required.</p>
+
+            <!-- Error message -->
+            <div class="form-message error" id="formError">
+              <i class="fas fa-circle-exclamation"></i>
+              <span id="formErrorText"></span>
+            </div>
+
+            <form id="orderForm" novalidate>
+
+              <!-- ── SECTION 1: WORK TYPE ───────────────────── -->
+              <div class="form-section-label"><i class="fas fa-file-alt"></i> Type of Work</div>
+
+              <div class="fields-2col">
+                <div class="field-group">
+                  <label for="workType">Type of Work <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-file-alt"></i>
+                    <select id="workType" required>
+                      <option value="" disabled selected>Select work type…</option>
+                      <option value="essay">Essay</option>
+                      <option value="research-paper">Research Paper</option>
+                      <option value="discussion-post">Discussion Post</option>
+                      <option value="dissertation-chapter">Dissertation Chapter</option>
+                      <option value="thesis">Thesis / Full Dissertation</option>
+                      <option value="case-study">Case Study</option>
+                      <option value="annotated-bibliography">Annotated Bibliography</option>
+                      <option value="literature-review">Literature Review</option>
+                      <option value="term-paper">Term Paper</option>
+                      <option value="coursework">Coursework Assignment</option>
+                      <option value="lab-report">Lab Report</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <i class="select-arrow fas fa-chevron-down"></i>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="academicLevel">Academic Level <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-graduation-cap"></i>
+                    <select id="academicLevel" required>
+                      <option value="" disabled selected>Select level…</option>
+                      <option value="high-school">High School</option>
+                      <option value="undergraduate">Undergraduate (Year 1–2)</option>
+                      <option value="junior">Undergraduate (Year 3–4)</option>
+                      <option value="graduate">Graduate / Masters</option>
+                      <option value="doctoral">Doctoral / PhD</option>
+                      <option value="professional">Professional</option>
+                    </select>
+                    <i class="select-arrow fas fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="subject">Subject / Discipline <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="f-icon fas fa-book"></i>
+                  <select id="subject" required>
+                    <option value="" disabled selected>Select subject…</option>
+                    <option value="nursing">Nursing &amp; Healthcare</option>
+                    <option value="biology">Biology &amp; Life Sciences</option>
+                    <option value="psychology">Psychology</option>
+                    <option value="business">Business &amp; Management</option>
+                    <option value="education">Education</option>
+                    <option value="sociology">Sociology &amp; Social Work</option>
+                    <option value="history">History</option>
+                    <option value="english">English &amp; Literature</option>
+                    <option value="math">Mathematics</option>
+                    <option value="computer-science">Computer Science &amp; IT</option>
+                    <option value="criminal-justice">Criminal Justice</option>
+                    <option value="accounting">Accounting &amp; Finance</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="philosophy">Philosophy</option>
+                    <option value="political-science">Political Science</option>
+                    <option value="other">Other (specify in notes)</option>
+                  </select>
+                  <i class="select-arrow fas fa-chevron-down"></i>
+                </div>
+                <!-- Quick subject pills -->
+                <div class="subject-pills" id="subjectPills">
+                  <span class="subject-pill" data-val="nursing" onclick="setSubject(this,'nursing')">Nursing</span>
+                  <span class="subject-pill" data-val="psychology" onclick="setSubject(this,'psychology')">Psychology</span>
+                  <span class="subject-pill" data-val="business" onclick="setSubject(this,'business')">Business</span>
+                  <span class="subject-pill" data-val="biology" onclick="setSubject(this,'biology')">Biology</span>
+                  <span class="subject-pill" data-val="education" onclick="setSubject(this,'education')">Education</span>
+                  <span class="subject-pill" data-val="english" onclick="setSubject(this,'english')">English</span>
+                </div>
+              </div>
+
+              <!-- ── SECTION 2: ESSAY DETAILS ───────────────── -->
+              <div class="form-section-label"><i class="fas fa-sliders-h"></i> Essay Details</div>
+
+              <div class="field-group">
+                <label for="topic">Essay Topic / Title <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="f-icon fas fa-heading"></i>
+                  <input type="text" id="topic" placeholder="e.g. The impact of social media on mental health" required />
+                </div>
+              </div>
+
+              <div class="fields-2col">
+                <div class="field-group">
+                  <label>Word Count <span class="req">*</span> <span class="hint">(min 250)</span></label>
+                  <div class="wc-stepper" id="wcStepper">
+                    <button type="button" class="wc-btn" onclick="adjustWC(-250)" aria-label="Decrease word count">−</button>
+                    <input type="number" class="wc-input" id="wordCount" value="500" min="250" max="50000" step="250" required />
+                    <span class="wc-unit">words</span>
+                    <button type="button" class="wc-btn" onclick="adjustWC(250)" aria-label="Increase word count">+</button>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="numEssays">Number of Essays / Papers <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-copy"></i>
+                    <select id="numEssays" required>
+                      <option value="1" selected>1 Essay</option>
+                      <option value="2">2 Essays</option>
+                      <option value="3">3 Essays</option>
+                      <option value="4">4 Essays</option>
+                      <option value="5">5 Essays</option>
+                      <option value="6-10">6–10 Essays</option>
+                      <option value="10+">More than 10</option>
+                    </select>
+                    <i class="select-arrow fas fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fields-2col">
+                <div class="field-group">
+                  <label for="citationStyle">Citation Style</label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-quote-left"></i>
+                    <select id="citationStyle">
+                      <option value="any">Any / Not Required</option>
+                      <option value="apa">APA 7th Edition</option>
+                      <option value="mla">MLA</option>
+                      <option value="chicago">Chicago / Turabian</option>
+                      <option value="harvard">Harvard</option>
+                      <option value="ama">AMA</option>
+                      <option value="other">Other (specify below)</option>
+                    </select>
+                    <i class="select-arrow fas fa-chevron-down"></i>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="numSources">Number of Sources</label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-list-ol"></i>
+                    <select id="numSources">
+                      <option value="any">No preference</option>
+                      <option value="1-3">1–3 sources</option>
+                      <option value="4-6">4–6 sources</option>
+                      <option value="7-10">7–10 sources</option>
+                      <option value="11-15">11–15 sources</option>
+                      <option value="16+">16+ sources</option>
+                    </select>
+                    <i class="select-arrow fas fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── SECTION 3: DEADLINE ────────────────────── -->
+              <div class="form-section-label"><i class="fas fa-clock"></i> Deadline</div>
+
+              <div class="field-group">
+                <label>Select Deadline <span class="req">*</span></label>
+                <div class="deadline-grid">
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl6h" value="6 hours" />
+                    <label for="dl6h">
+                      <span class="dl-time">6 Hours</span>
+                      <span class="dl-note">Rush</span>
+                      <span class="dl-badge">Urgent</span>
+                    </label>
+                  </div>
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl12h" value="12 hours" />
+                    <label for="dl12h">
+                      <span class="dl-time">12 Hours</span>
+                      <span class="dl-note">Same Day</span>
+                    </label>
+                  </div>
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl24h" value="24 hours" checked />
+                    <label for="dl24h">
+                      <span class="dl-time">24 Hours</span>
+                      <span class="dl-note">Next Day</span>
+                    </label>
+                  </div>
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl3d" value="3 days" />
+                    <label for="dl3d">
+                      <span class="dl-time">3 Days</span>
+                      <span class="dl-note">Standard</span>
+                    </label>
+                  </div>
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl7d" value="7 days" />
+                    <label for="dl7d">
+                      <span class="dl-time">7 Days</span>
+                      <span class="dl-note">Relaxed</span>
+                    </label>
+                  </div>
+                  <div class="deadline-option">
+                    <input type="radio" name="deadline" id="dl14d" value="14 days" />
+                    <label for="dl14d">
+                      <span class="dl-time">14+ Days</span>
+                      <span class="dl-note">Extended</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="exactDeadline">Exact Deadline Date &amp; Time <span class="hint">(optional)</span></label>
+                <div class="field-wrap">
+                  <i class="f-icon fas fa-calendar-alt"></i>
+                  <input type="datetime-local" id="exactDeadline" />
+                </div>
+              </div>
+
+              <!-- ── SECTION 4: YOUR DETAILS ────────────────── -->
+              <div class="form-section-label"><i class="fas fa-user"></i> Your Contact Details</div>
+
+              <div class="fields-2col">
+                <div class="field-group">
+                  <label for="clientName">Your Full Name <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-user"></i>
+                    <input type="text" id="clientName" placeholder="John Doe" required />
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label for="clientEmail">Email Address <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="f-icon fas fa-envelope"></i>
+                    <input type="email" id="clientEmail" placeholder="you@email.com" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Preferred Contact Method</label>
+                <div class="contact-methods">
+                  <div class="contact-method">
+                    <input type="radio" name="contactMethod" id="cm-email" value="email" checked />
+                    <label for="cm-email"><i class="fas fa-envelope"></i> Email</label>
+                  </div>
+                  <div class="contact-method">
+                    <input type="radio" name="contactMethod" id="cm-insta" value="instagram" />
+                    <label for="cm-insta"><i class="fab fa-instagram"></i> Instagram</label>
+                  </div>
+                  <div class="contact-method">
+                    <input type="radio" name="contactMethod" id="cm-whatsapp" value="whatsapp" />
+                    <label for="cm-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</label>
+                  </div>
+                  <div class="contact-method">
+                    <input type="radio" name="contactMethod" id="cm-text" value="text" />
+                    <label for="cm-text"><i class="fas fa-sms"></i> Text/SMS</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group" id="instaHandleWrap" style="display:none;">
+                <label for="instaHandle">Your Instagram Handle <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="f-icon fab fa-instagram"></i>
+                  <input type="text" id="instaHandle" placeholder="@yourusername" />
+                </div>
+              </div>
+
+              <div class="field-group" id="whatsappWrap" style="display:none;">
+                <label for="whatsappNumber">WhatsApp Number <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="f-icon fab fa-whatsapp"></i>
+                  <input type="tel" id="whatsappNumber" placeholder="+1 234 567 8900" />
+                </div>
+              </div>
+
+              <!-- ── SECTION 5: SPECIAL REQUESTS ───────────── -->
+              <div class="form-section-label"><i class="fas fa-sticky-note"></i> Additional Details</div>
+
+              <div class="field-group">
+                <label for="specialRequests">Special Instructions / Additional Notes <span class="hint">(optional but recommended)</span></label>
+                <textarea id="specialRequests" class="no-icon" placeholder="Include any specific requirements: thesis statement, course name, professor guidelines, rubric details, specific sources to include or avoid, formatting requirements, or any other instructions that will help us deliver exactly what you need…"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label for="fileInstructions">Rubric / Assignment Guidelines</label>
+                <div class="field-wrap">
+                  <i class="f-icon fas fa-paperclip"></i>
+                  <input type="text" id="fileInstructions" placeholder="Paste a link to rubric or describe the assignment requirements here" />
+                </div>
+              </div>
+
+              <!-- ── PRICE ESTIMATE ─────────────────────────── -->
+              <div class="price-estimate" id="priceEstimate">
+                <div>
+                  <p>Estimated Price</p>
+                  <span class="price-note">Final price confirmed within 15 min</span>
+                </div>
+                <span class="price-val" id="priceVal">$15 – $30</span>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="order-submit-btn" id="orderSubmitBtn">
+                <div class="spinner"></div>
+                <span class="btn-label"><i class="fas fa-paper-plane"></i> Submit My Order</span>
+              </button>
+
+              <p style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:14px;">
+                <i class="fas fa-lock"></i> Your information is secure. We will contact you within 15 minutes to confirm pricing.
+              </p>
+
+            </form>
+          </div><!-- end #orderFormWrap -->
+        </div><!-- end .order-card -->
+
+        <!-- ── RIGHT: SIDEBAR ────────────────────────────────── -->
+        <aside class="order-sidebar">
+
+          <!-- How It Works -->
+          <div class="sidebar-card">
+            <h3><i class="fas fa-list-ol"></i> How It Works</h3>
+            <div class="how-steps">
+              <div class="how-step">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                  <h4>Fill the Order Form</h4>
+                  <p>Tell us your topic, word count, deadline, and any special instructions.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                  <h4>Get a Price Quote</h4>
+                  <p>We'll reach out within 15 minutes with your final price and writer assignment.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                  <h4>Writer Gets to Work</h4>
+                  <p>Our expert writer starts immediately upon payment confirmation.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="step-num">4</div>
+                <div class="step-text">
+                  <h4>Receive Your Paper</h4>
+                  <p>Delivered before your deadline — ready to submit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guarantees -->
+          <div class="sidebar-card">
+            <h3><i class="fas fa-shield-alt"></i> Our Guarantees</h3>
+            <div class="guarantee-list">
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> 100% original, plagiarism-free work</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> On-time delivery guaranteed</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> Free unlimited revisions</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> Expert writers with degrees</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> Confidential &amp; secure</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> 24/7 support via Instagram</div>
+              <div class="guarantee-item"><i class="fas fa-check-circle"></i> Satisfaction guaranteed</div>
+            </div>
+          </div>
+
+          <!-- What We Write -->
+          <div class="sidebar-card">
+            <h3><i class="fas fa-pen"></i> What We Write</h3>
+            <div class="guarantee-list">
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Essays &amp; Analytical Papers</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Research &amp; Term Papers</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Dissertation Chapters</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Discussion Posts &amp; Forums</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Annotated Bibliographies</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Literature Reviews</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Case Studies &amp; Lab Reports</div>
+              <div class="guarantee-item"><i class="fas fa-circle" style="font-size:.4rem;color:var(--primary);"></i> Coursework &amp; Assignments</div>
+            </div>
+          </div>
+
+          <!-- Instagram CTA -->
+          <div class="insta-cta-card">
+            <i class="fab fa-instagram insta-icon"></i>
+            <h3>Message Us Directly</h3>
+            <p>Need a faster response? DM us on Instagram and get a reply in minutes.</p>
+            <a href="https://www.instagram.com/bigman_academic_services" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i> @bigman_academic_services
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer-placeholder"></div>
+<script src="js/api.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* ── Word count stepper ────────────────────────────────────── */
+  function adjustWC(delta) {
+    const input = document.getElementById('wordCount');
+    const current = parseInt(input.value) || 500;
+    const newVal = Math.max(250, Math.min(50000, current + delta));
+    input.value = newVal;
+    updatePrice();
+  }
+
+  document.getElementById('wordCount').addEventListener('input', updatePrice);
+
+  /* ── Subject pill quick-select ───────────────────────────── */
+  function setSubject(pill, val) {
+    document.getElementById('subject').value = val;
+    document.querySelectorAll('.subject-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  }
+
+  document.getElementById('subject').addEventListener('change', function() {
+    const val = this.value;
+    document.querySelectorAll('.subject-pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.val === val);
+    });
+  });
+
+  /* ── Contact method toggle ───────────────────────────────── */
+  document.querySelectorAll('input[name="contactMethod"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      document.getElementById('instaHandleWrap').style.display = this.value === 'instagram' ? 'block' : 'none';
+      document.getElementById('whatsappWrap').style.display = this.value === 'whatsapp' ? 'block' : 'none';
+    });
+  });
+
+  /* ── Price estimator ─────────────────────────────────────── */
+  function updatePrice() {
+    const wc = parseInt(document.getElementById('wordCount').value) || 500;
+    const level = document.getElementById('academicLevel').value;
+    const deadline = document.querySelector('input[name="deadline"]:checked')?.value || '24 hours';
+    const qty = document.getElementById('numEssays').value;
+    const qtyNum = qty === '6-10' ? 8 : qty === '10+' ? 12 : parseInt(qty) || 1;
+
+    // Base rate per 100 words
+    const levelMult = { 'high-school': 1, 'undergraduate': 1.2, 'junior': 1.35, 'graduate': 1.6, 'doctoral': 2, 'professional': 1.8 };
+    const deadlineMult = { '6 hours': 2.2, '12 hours': 1.8, '24 hours': 1.4, '3 days': 1.0, '7 days': 0.85, '14 days': 0.75 };
+
+    const baseRate = 3.0; // per 100 words base
+    const lm = levelMult[level] || 1.2;
+    const dm = deadlineMult[deadline] || 1.4;
+    const pages = wc / 275;
+    const basePrice = pages * baseRate * lm * dm * qtyNum * 2.5;
+
+    const low = Math.round(basePrice * 0.9);
+    const high = Math.round(basePrice * 1.15);
+
+    document.getElementById('priceVal').textContent = '$' + Math.max(10, low) + ' – $' + Math.max(15, high);
+  }
+
+  document.getElementById('academicLevel').addEventListener('change', updatePrice);
+  document.getElementById('numEssays').addEventListener('change', updatePrice);
+  document.querySelectorAll('input[name="deadline"]').forEach(r => r.addEventListener('change', updatePrice));
+
+  updatePrice();
+
+  /* ── Show form error ─────────────────────────────────────── */
+  function showError(text) {
+    const el = document.getElementById('formError');
+    document.getElementById('formErrorText').textContent = text;
+    el.style.display = 'flex';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ── Form submit ─────────────────────────────────────────── */
+  document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const workType     = document.getElementById('workType').value;
+    const academicLevel = document.getElementById('academicLevel').value;
+    const subject      = document.getElementById('subject').value;
+    const topic        = document.getElementById('topic').value.trim();
+    const wordCount    = parseInt(document.getElementById('wordCount').value);
+    const clientName   = document.getElementById('clientName').value.trim();
+    const clientEmail  = document.getElementById('clientEmail').value.trim();
+    const contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value;
+    const deadline     = document.querySelector('input[name="deadline"]:checked')?.value;
+    const btn          = document.getElementById('orderSubmitBtn');
+
+    // Validation
+    if (!workType)    { showError('Please select a type of work.'); return; }
+    if (!academicLevel) { showError('Please select your academic level.'); return; }
+    if (!subject)     { showError('Please select a subject.'); return; }
+    if (!topic)       { showError('Please enter your essay topic or title.'); return; }
+    if (!wordCount || wordCount < 250) { showError('Please enter a valid word count (minimum 250 words).'); return; }
+    if (!clientName)  { showError('Please enter your full name.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clientEmail)) { showError('Please enter a valid email address.'); return; }
+
+    if (contactMethod === 'instagram') {
+      const handle = document.getElementById('instaHandle').value.trim();
+      if (!handle) { showError('Please enter your Instagram handle.'); return; }
+    }
+
+    if (contactMethod === 'whatsapp') {
+      const num = document.getElementById('whatsappNumber').value.trim();
+      if (!num) { showError('Please enter your WhatsApp number.'); return; }
+    }
+
+    // Loading state
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    // Build the order payload for the real API
+    const orderPayload = {
+      serviceType:      'essay',
+      workType,
+      academicLevel,
+      subject,
+      topic,
+      wordCount:        parseInt(document.getElementById('wordCount').value),
+      numEssays:        document.getElementById('numEssays').value,
+      citationStyle:    document.getElementById('citationStyle').value,
+      numSources:       document.getElementById('numSources').value,
+      deadlineOption:   deadline,
+      exactDeadline:    document.getElementById('exactDeadline').value || null,
+      clientName,
+      clientEmail,
+      contactMethod,
+      instaHandle:      document.getElementById('instaHandle')?.value?.trim() || null,
+      whatsappNumber:   document.getElementById('whatsappNumber')?.value?.trim() || null,
+      specialRequests:  document.getElementById('specialRequests').value.trim(),
+      fileInstructions: document.getElementById('fileInstructions').value.trim(),
+      estimatedPrice:   document.getElementById('priceVal').textContent,
+    };
+
+    try {
+      // ── Submit to real backend API ───────────────────────────
+      const result = await API.orders.submit(orderPayload);
+
+      btn.classList.remove('loading');
+      btn.disabled = false;
+
+      // Show success state with real order number
+      const overlay = document.getElementById('successOverlay');
+      const orderNumEl = document.getElementById('successOrderNumber');
+      if (orderNumEl && result.order?.orderNumber) {
+        orderNumEl.textContent = result.order.orderNumber;
+        document.getElementById('successOrderNumberWrap').style.display = 'block';
+      }
+
+      document.getElementById('orderFormWrap').style.display = 'none';
+      overlay.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+
+      const errText = err.message || 'Order submission failed. Please try again or contact us directly on Instagram.';
+      showError(errText);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>

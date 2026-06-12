@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard | Bigman Academic Services</title>
+  <meta name="description" content="Your Bigman Academic Services student dashboard — manage your courses, sessions, materials, and progress in one place." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <style>
+    /* ── DASHBOARD LAYOUT ──────────────────────────────────────── */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* ── SIDEBAR ───────────────────────────────────────────────── */
+    .dash-sidebar {
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 28px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .dash-sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .dash-sidebar-logo .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem;
+    }
+
+    .dash-sidebar-logo .logo-main { font-size: 1rem; font-weight: 800; color: var(--text-primary); display: block; }
+    .dash-sidebar-logo .logo-sub { font-size: .68rem; color: var(--text-secondary); display: block; }
+
+    .dash-nav-label {
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      padding: 0 24px;
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+
+    .dash-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 24px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+
+    .dash-nav-item i { width: 18px; text-align: center; font-size: .9rem; }
+
+    .dash-nav-item:hover,
+    .dash-nav-item.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-left-color: var(--primary);
+    }
+
+    .dash-sidebar-bottom {
+      margin-top: auto;
+      padding: 20px 24px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .dash-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .dash-user-initials {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dash-user-name { font-size: .88rem; font-weight: 700; color: var(--text-primary); }
+    .dash-user-email { font-size: .75rem; color: var(--text-muted); }
+
+    .dash-logout {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: .83rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .dash-logout:hover { border-color: #ef4444; color: #ef4444; background: #fee2e2; }
+
+    /* ── MAIN CONTENT ───────────────────────────────────────────── */
+    .dash-main {
+      padding: 36px 40px;
+      overflow-y: auto;
+    }
+
+    .dash-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dash-welcome h1 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .dash-welcome p { font-size: .9rem; color: var(--text-secondary); }
+
+    .dash-topbar-actions { display: flex; gap: 10px; }
+
+    /* ── STAT CARDS ─────────────────────────────────────────────── */
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .dash-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all var(--transition);
+    }
+
+    .dash-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
+
+    .dash-stat-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .dash-stat-icon.blue { background: rgba(92,106,196,.12); color: var(--primary); }
+    .dash-stat-icon.green { background: rgba(16,185,129,.12); color: #10b981; }
+    .dash-stat-icon.orange { background: rgba(245,166,35,.12); color: var(--accent); }
+    .dash-stat-icon.purple { background: rgba(139,92,246,.12); color: #8b5cf6; }
+
+    .dash-stat-val { font-size: 1.6rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+    .dash-stat-label { font-size: .8rem; color: var(--text-secondary); margin-top: 4px; font-weight: 500; }
+
+    /* ── TWO-COL GRID ────────────────────────────────────────────── */
+    .dash-grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    /* ── PANEL / CARD ─────────────────────────────────────────────── */
+    .dash-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .dash-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .dash-panel-header h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .dash-panel-header a {
+      font-size: .8rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .dash-panel-header a:hover { text-decoration: underline; }
+
+    /* ── ENROLLED COURSE ROW ─────────────────────────────────────── */
+    .dash-course-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dash-course-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .dash-course-thumb {
+      width: 52px; height: 52px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .dash-course-info { flex: 1; }
+    .dash-course-info h4 { font-size: .88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .dash-course-info span { font-size: .75rem; color: var(--text-muted); }
+
+    .dash-progress-bar {
+      height: 5px;
+      background: var(--border);
+      border-radius: 999px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .dash-progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    /* ── UPCOMING SESSIONS ────────────────────────────────────────── */
+    .dash-session {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dash-session:last-child { border-bottom: none; }
+
+    .dash-session-date {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 10px;
+      padding: 8px 10px;
+      text-align: center;
+      min-width: 48px;
+      flex-shrink: 0;
+    }
+
+    .dash-session-date strong { display: block; font-size: 1.1rem; font-weight: 800; }
+    .dash-session-date span { font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+
+    .dash-session-info h4 { font-size: .87rem; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+    .dash-session-info p { font-size: .78rem; color: var(--text-secondary); margin-bottom: 6px; }
+
+    .dash-session-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(16,185,129,.12);
+      color: #10b981;
+    }
+
+    /* ── QUICK LINKS ───────────────────────────────────────────────── */
+    .dash-quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .dash-quick-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      transition: all var(--transition);
+      color: var(--text-primary);
+    }
+
+    .dash-quick-link:hover { border-color: var(--primary); background: var(--primary-light); color: var(--primary); transform: translateY(-2px); }
+
+    .dash-quick-link i { font-size: 1.1rem; width: 20px; text-align: center; }
+    .dash-quick-link span { font-size: .85rem; font-weight: 700; }
+
+    /* ── ENROL CTA BANNER ────────────────────────────────────────── */
+    .dash-enrol-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #7b55c7 100%);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      color: #fff;
+    }
+
+    .dash-enrol-banner h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .dash-enrol-banner p { font-size: .85rem; color: rgba(255,255,255,.8); margin: 0; }
+    .dash-enrol-banner .btn-white {
+      background: #fff; color: var(--primary); border: none; padding: 11px 22px;
+      border-radius: var(--radius); font-weight: 700; font-size: .88rem; cursor: pointer;
+      text-decoration: none; white-space: nowrap; transition: all var(--transition);
+    }
+
+    .dash-enrol-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .dash-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .dash-sidebar { display: none; }
+      .dash-main { padding: 24px 20px; }
+      .dash-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .dash-stats { grid-template-columns: 1fr 1fr; }
+      .dash-quick-links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header-placeholder"></div>
+
+<main>
+  <div class="dashboard-layout">
+
+    <!-- ── SIDEBAR ──────────────────────────────────────────── -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-logo">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <span class="logo-main">Bigman</span>
+          <span class="logo-sub">Student Dashboard</span>
+        </div>
+      </div>
+
+      <span class="dash-nav-label">Main</span>
+      <a class="dash-nav-item active" href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+      <a class="dash-nav-item" href="courses.html"><i class="fas fa-book-open"></i> My Courses</a>
+      <a class="dash-nav-item" href="tutoring.html"><i class="fas fa-chalkboard-teacher"></i> Tutoring Sessions</a>
+      <a class="dash-nav-item" href="materials.html"><i class="fas fa-folder-open"></i> Study Materials</a>
+
+      <span class="dash-nav-label">Support</span>
+      <a class="dash-nav-item" href="expert-help.html"><i class="fas fa-user-tie"></i> Expert Help</a>
+      <a class="dash-nav-item" href="blog.html"><i class="fas fa-newspaper"></i> Articles & Blog</a>
+      <a class="dash-nav-item" href="index.html#contact"><i class="fas fa-envelope"></i> Contact Support</a>
+
+      <div class="dash-sidebar-bottom">
+        <div class="dash-user">
+          <div class="dash-user-initials" id="sidebarInitials">?</div>
+          <div>
+            <div class="dash-user-name" id="sidebarName">Loading...</div>
+            <div class="dash-user-email" id="sidebarEmail"></div>
+          </div>
+        </div>
+        <button class="dash-logout" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── MAIN CONTENT ──────────────────────────────────────── -->
+    <div class="dash-main">
+
+      <!-- Top bar -->
+      <div class="dash-topbar">
+        <div class="dash-welcome">
+          <h1>Good day, <span id="welcomeName">Student</span>! 👋</h1>
+          <p>Here's a summary of your academic journey so far.</p>
+        </div>
+        <div class="dash-topbar-actions">
+          <a href="tutoring.html" class="btn btn-outline btn-sm" style="border:1.5px solid var(--border);color:var(--text-secondary);background:var(--bg-card);">
+            <i class="fas fa-calendar-plus"></i> Book Session
+          </a>
+          <a href="courses.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Enrol in Course
+          </a>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="dash-stats">
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon blue"><i class="fas fa-book-open"></i></div>
+          <div>
+            <div class="dash-stat-val">3</div>
+            <div class="dash-stat-label">Courses Enrolled</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon green"><i class="fas fa-calendar-check"></i></div>
+          <div>
+            <div class="dash-stat-val">7</div>
+            <div class="dash-stat-label">Sessions Completed</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon orange"><i class="fas fa-download"></i></div>
+          <div>
+            <div class="dash-stat-val">14</div>
+            <div class="dash-stat-label">Materials Downloaded</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon purple"><i class="fas fa-star"></i></div>
+          <div>
+            <div class="dash-stat-val">B+</div>
+            <div class="dash-stat-label">Avg. Grade Improvement</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enrol CTA banner -->
+      <div class="dash-enrol-banner">
+        <div>
+          <h3>🎓 Unlock Premium Access</h3>
+          <p>Get full access to all annotated sample papers, expert video tutorials, and priority tutor matching.</p>
+        </div>
+        <a href="index.html#contact" class="btn-white">Upgrade Now</a>
+      </div>
+
+      <!-- Main grid -->
+      <div class="dash-grid-2">
+
+        <!-- Enrolled Courses -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3><i class="fas fa-book-open" style="color:var(--primary);margin-right:8px;"></i>My Enrolled Courses</h3>
+            <a href="courses.html">View All</a>
+          </div>
+
+          <div class="dash-course-item">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=100&q=70" alt="Essay Writing" class="dash-course-thumb" />
+            <div class="dash-course-info">
+              <h4>Academic Essay Writing Masterclass</h4>
+              <span>8 hours · 24 lessons · 68% complete</span>
+              <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:68%;"></div></div>
+            </div>
+          </div>
+
+          <div class="dash-course-item">
+            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=100&q=70" alt="Statistics" class="dash-course-thumb" />
+            <div class="dash-course-info">
+              <h4>Statistics for Academic Success</h4>
+              <span>16 hours · 40 lessons · 32% complete</span>
+              <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:32%;"></div></div>
+            </div>
+          </div>
+
+          <div class="dash-course-item">
+            <img src="https://images.unsplash.com/photo-1532094349884-543559059c4c?w=100&q=70" alt="Research Methods" class="dash-course-thumb" />
+            <div class="dash-course-info">
+              <h4>Research Methods Fundamentals</h4>
+              <span>12 hours · 32 lessons · 15% complete</span>
+              <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:15%;"></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <a href="courses.html" class="btn btn-outline btn-sm" style="border:1.5px solid var(--border);color:var(--text-secondary);">
+              <i class="fas fa-plus"></i> Browse More Courses
+            </a>
+          </div>
+        </div>
+
+        <!-- Upcoming Sessions -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3><i class="fas fa-calendar" style="color:var(--primary);margin-right:8px;"></i>Upcoming Sessions</h3>
+            <a href="tutoring.html">Book More</a>
+          </div>
+
+          <div class="dash-session">
+            <div class="dash-session-date"><strong>18</strong><span>Jun</span></div>
+            <div class="dash-session-info">
+              <h4>Mathematics — Calculus Review</h4>
+              <p>3:00 PM – 4:00 PM · Dr. James Okafor</p>
+              <span class="dash-session-tag"><i class="fas fa-circle" style="font-size:.5rem;margin-right:4px;"></i> Confirmed</span>
+            </div>
+          </div>
+
+          <div class="dash-session">
+            <div class="dash-session-date" style="background:rgba(139,92,246,.1);color:#8b5cf6;"><strong>22</strong><span>Jun</span></div>
+            <div class="dash-session-info">
+              <h4>Essay Writing — Argument Structure</h4>
+              <p>5:00 PM – 6:00 PM · Prof. Sarah Mensah</p>
+              <span class="dash-session-tag" style="background:rgba(139,92,246,.1);color:#8b5cf6;"><i class="fas fa-circle" style="font-size:.5rem;margin-right:4px;"></i> Confirmed</span>
+            </div>
+          </div>
+
+          <div class="dash-session">
+            <div class="dash-session-date" style="background:rgba(245,166,35,.1);color:var(--accent);"><strong>28</strong><span>Jun</span></div>
+            <div class="dash-session-info">
+              <h4>Research Methods — Literature Review</h4>
+              <p>2:00 PM – 3:00 PM · TBC</p>
+              <span class="dash-session-tag" style="background:rgba(245,166,35,.1);color:var(--accent);"><i class="fas fa-circle" style="font-size:.5rem;margin-right:4px;"></i> Pending</span>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <a href="tutoring.html" class="btn btn-primary btn-sm btn-full"><i class="fas fa-calendar-plus"></i> Book New Session</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <h3 style="font-size:1rem;font-weight:800;color:var(--text-primary);margin-bottom:16px;">Quick Access</h3>
+      <div class="dash-quick-links">
+        <a class="dash-quick-link" href="materials.html">
+          <i class="fas fa-download" style="color:var(--primary);"></i>
+          <span>Download Study Materials</span>
+        </a>
+        <a class="dash-quick-link" href="expert-help.html">
+          <i class="fas fa-user-tie" style="color:#8b5cf6;"></i>
+          <span>Request Expert Help</span>
+        </a>
+        <a class="dash-quick-link" href="blog.html">
+          <i class="fas fa-newspaper" style="color:var(--accent);"></i>
+          <span>Read Academic Articles</span>
+        </a>
+        <a class="dash-quick-link" href="index.html#contact">
+          <i class="fas fa-headset" style="color:#10b981;"></i>
+          <span>Contact Your Advisor</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* ── Check session on load ─────────────────────── */
+  window.addEventListener('DOMContentLoaded', () => {
+    const session = JSON.parse(localStorage.getItem('bigman_session') || 'null');
+
+    if (!session || !session.loggedIn) {
+      // Not logged in — redirect to login
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const name = session.name || 'Student';
+    const email = session.email || '';
+    const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+    const firstName = name.split(' ')[0];
+
+    document.getElementById('welcomeName').textContent = firstName;
+    document.getElementById('sidebarName').textContent = name;
+    document.getElementById('sidebarEmail').textContent = email;
+    document.getElementById('sidebarInitials').textContent = initials;
+  });
+
+  /* ── Logout ─────────────────────────────────────── */
+  function logout() {
+    localStorage.removeItem('bigman_session');
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

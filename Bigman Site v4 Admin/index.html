@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bigman Academic Services | Professional Academic Excellence</title>
+  <meta name="description" content="Bigman Academic Services offers professional academic assistance including essay writing, research support, tutoring, and more. Your success is our mission." />
+
+  <!-- Google Fonts - Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo"><i class="fas fa-graduation-cap"></i></div>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  </div>
+
+  <!-- ============================================================
+       TOP ANNOUNCEMENT BAR
+  ============================================================ -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container">
+      <p>🎓 <strong>Limited Offer:</strong> Get 20% off your first order — Use code <strong>BIGMAN20</strong> at checkout!</p>
+      <button class="close-announcement" id="closeAnnouncement" aria-label="Close announcement">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HEADER / NAVIGATION
+  ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Bigman Academic Services Home">
+        <div class="logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">Bigman</span>
+          <span class="logo-sub">Academic Services</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="has-dropdown">
+            <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="tutoring.html"><i class="fas fa-chalkboard-teacher"></i> Online Tutoring</a></li>
+              <li><a href="courses.html"><i class="fas fa-book-open"></i> Courses</a></li>
+              <li><a href="materials.html"><i class="fas fa-folder-open"></i> Study Materials</a></li>
+              <li><a href="expert-help.html"><i class="fas fa-user-tie"></i> Expert Help</a></li>
+              <li><a href="#services"><i class="fas fa-pen-fancy"></i> Essay Writing</a></li>
+              <li><a href="#services"><i class="fas fa-microscope"></i> Research Support</a></li>
+              <li><a href="#services"><i class="fas fa-book"></i> Dissertation Help</a></li>
+            </ul>
+          </li>
+          <li><a href="tutoring.html" class="nav-link">Tutoring</a></li>
+          <li><a href="courses.html" class="nav-link">Courses</a></li>
+          <li><a href="materials.html" class="nav-link">Materials</a></li>
+          <li><a href="expert-help.html" class="nav-link">Expert Help</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <span class="theme-icon light-icon"><i class="fas fa-sun"></i></span>
+          <span class="theme-icon dark-icon"><i class="fas fa-moon"></i></span>
+        </button>
+
+        <a href="login.html" class="btn btn-outline btn-sm" style="border:1.5px solid var(--primary);color:var(--primary);background:transparent;">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a href="signup.html" class="btn btn-primary btn-sm">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-logo">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Bigman Academic</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="tutoring.html" class="mobile-nav-link"><i class="fas fa-chalkboard-teacher"></i> Tutoring</a></li>
+      <li><a href="courses.html" class="mobile-nav-link"><i class="fas fa-book-open"></i> Courses</a></li>
+      <li><a href="materials.html" class="mobile-nav-link"><i class="fas fa-folder-open"></i> Materials</a></li>
+      <li><a href="expert-help.html" class="mobile-nav-link"><i class="fas fa-user-tie"></i> Expert Help</a></li>
+      <li><a href="blog.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i> Blog</a></li>
+      <li><a href="#about" class="mobile-nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="login.html" class="mobile-nav-link"><i class="fas fa-sign-in-alt"></i> Student Login</a></li>
+      <li><a href="signup.html" class="mobile-nav-link"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+    </ul>
+    <a href="signup.html" class="btn btn-primary btn-full mt-4">Enrol Now — It's Free</a>
+  </nav>
+
+  <main id="home">
+
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section class="hero-section" id="hero">
+      <!-- Decorative background shapes -->
+      <div class="hero-bg-shapes" aria-hidden="true">
+        <div class="shape shape-circle-1"></div>
+        <div class="shape shape-circle-2"></div>
+        <div class="shape shape-dots-1"></div>
+        <div class="shape shape-dots-2"></div>
+        <div class="shape shape-wave"></div>
+      </div>
+
+      <div class="container hero-inner">
+        <!-- Hero Text -->
+        <div class="hero-content" data-aos="fade-right">
+          <div class="hero-badge">
+            <i class="fas fa-award"></i>
+            <span>Trusted by 5,000+ Students Worldwide</span>
+          </div>
+          <h1 class="hero-title">
+            Achieve <span class="highlight">Academic Excellence</span> With Expert Support
+          </h1>
+          <p class="hero-desc">
+            Bigman Academic Services connects you with highly qualified academic professionals who provide personalized assistance in essays, research, dissertations, tutoring, and more — so you can reach your full academic potential.
+          </p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary btn-lg">
+              Explore Services <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#process" class="btn btn-outline btn-lg">
+              <i class="fas fa-play-circle"></i> How It Works
+            </a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-avatars">
+              <img src="https://i.pravatar.cc/40?img=1" alt="Student 1" />
+              <img src="https://i.pravatar.cc/40?img=5" alt="Student 2" />
+              <img src="https://i.pravatar.cc/40?img=9" alt="Student 3" />
+              <img src="https://i.pravatar.cc/40?img=12" alt="Student 4" />
+            </div>
+            <div class="trust-text">
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p><strong>4.9/5</strong> from 2,000+ happy students</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image / Visual -->
+        <div class="hero-visual" data-aos="fade-left">
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="Students achieving academic success" class="hero-img" />
+            <!-- Floating Cards -->
+            <div class="float-card float-card-1" data-aos="zoom-in" data-aos-delay="300">
+              <div class="float-card-icon green"><i class="fas fa-check-circle"></i></div>
+              <div>
+                <strong>Order Complete!</strong>
+                <span>Dissertation delivered</span>
+              </div>
+            </div>
+            <div class="float-card float-card-2" data-aos="zoom-in" data-aos-delay="500">
+              <div class="float-card-icon orange"><i class="fas fa-users"></i></div>
+              <div>
+                <strong>5,000+</strong>
+                <span>Students Helped</span>
+              </div>
+            </div>
+            <div class="float-card float-card-3" data-aos="zoom-in" data-aos-delay="700">
+              <div class="float-card-icon purple"><i class="fas fa-star"></i></div>
+              <div>
+                <strong>98% Success Rate</strong>
+                <span>Grade Improvement</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STATS BANNER
+    ============================================================ -->
+    <section class="stats-banner" aria-label="Key Statistics">
+      <div class="container stats-grid">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="5000">0</span><span class="stat-suffix">+</span>
+            <p>Students Helped</p>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+            <p>Subjects Covered</p>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+            <p>Success Rate</p>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+            <p>Expert Support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES SECTION
+    ============================================================ -->
+    <section class="services-section section-padding" id="services">
+      <div class="section-bg-shapes" aria-hidden="true">
+        <div class="bg-shape-1"></div>
+      </div>
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">What We Offer</span>
+          <h2 class="section-title">Academic Services <span class="highlight">Tailored For You</span></h2>
+          <p class="section-desc">From undergraduate essays to doctoral dissertations, our expert team covers every academic level and subject area with precision and integrity.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service Card 1 -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="service-card-top">
+              <div class="service-icon icon-blue">
+                <i class="fas fa-pen-fancy"></i>
+              </div>
+              <span class="service-badge popular">Most Popular</span>
+            </div>
+            <h3>Essay Writing</h3>
+            <p>Custom, well-researched essays crafted from scratch to your exact requirements and academic guidelines. Plagiarism-free, on time, every time.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> All academic levels</li>
+              <li><i class="fas fa-check"></i> 100% original content</li>
+              <li><i class="fas fa-check"></i> Turnaround from 6 hours</li>
+            </ul>
+            <a href="#contact" class="service-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Service Card 2 -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card-top">
+              <div class="service-icon icon-green">
+                <i class="fas fa-microscope"></i>
+              </div>
+            </div>
+            <h3>Research Support</h3>
+            <p>Comprehensive research assistance including literature reviews, data collection strategies, analysis frameworks, and academic source identification.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Primary & secondary research</li>
+              <li><i class="fas fa-check"></i> Credible academic sources</li>
+              <li><i class="fas fa-check"></i> Structured methodologies</li>
+            </ul>
+            <a href="#contact" class="service-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Service Card 3 -->
+          <article class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card-top">
+              <div class="service-icon icon-white">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <span class="service-badge white-badge">Premium</span>
+            </div>
+            <h3>Dissertation Help</h3>
+            <p>End-to-end dissertation support — from proposal writing to final chapter editing — guided by PhD-qualified experts in your field of study.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Chapter-by-chapter assistance</li>
+              <li><i class="fas fa-check"></i> PhD-level expertise</li>
+              <li><i class="fas fa-check"></i> Unlimited revisions</li>
+            </ul>
+            <a href="#contact" class="service-link white-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Service Card 4 -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card-top">
+              <div class="service-icon icon-purple">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
+            </div>
+            <h3>Online Tutoring</h3>
+            <p>One-on-one live tutoring sessions with subject matter experts who adapt their teaching to your learning style and pace.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Live 1-on-1 sessions</li>
+              <li><i class="fas fa-check"></i> Flexible scheduling</li>
+              <li><i class="fas fa-check"></i> All subjects available</li>
+            </ul>
+            <a href="#contact" class="service-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Service Card 5 -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-card-top">
+              <div class="service-icon icon-orange">
+                <i class="fas fa-spell-check"></i>
+              </div>
+            </div>
+            <h3>Proofreading & Editing</h3>
+            <p>Professional proofreading and editing to ensure your work is polished, well-structured, and free from grammatical or stylistic errors.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Grammar & style checks</li>
+              <li><i class="fas fa-check"></i> Structure improvement</li>
+              <li><i class="fas fa-check"></i> Citation formatting</li>
+            </ul>
+            <a href="#contact" class="service-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Service Card 6 -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-card-top">
+              <div class="service-icon icon-teal">
+                <i class="fas fa-calculator"></i>
+              </div>
+            </div>
+            <h3>Math & Sciences</h3>
+            <p>Expert help with mathematics, statistics, chemistry, physics, and biology — from high school level all the way to postgraduate study.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Step-by-step solutions</li>
+              <li><i class="fas fa-check"></i> STEM specialists</li>
+              <li><i class="fas fa-check"></i> Exam preparation</li>
+            </ul>
+            <a href="#contact" class="service-link">Order Now <i class="fas fa-arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT SECTION
+    ============================================================ -->
+    <section class="about-section section-padding" id="about">
+      <div class="container about-inner">
+        <!-- About Image Side -->
+        <div class="about-visual" data-aos="fade-right">
+          <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&q=80" alt="Expert academic professionals at Bigman" class="about-img" />
+            <div class="about-badge-card" data-aos="zoom-in" data-aos-delay="400">
+              <i class="fas fa-shield-alt"></i>
+              <div>
+                <strong>100% Confidential</strong>
+                <span>Your privacy is guaranteed</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-experience-badge" data-aos="zoom-in" data-aos-delay="600">
+            <span class="exp-number">10+</span>
+            <span class="exp-text">Years of Academic Excellence</span>
+          </div>
+        </div>
+
+        <!-- About Content Side -->
+        <div class="about-content" data-aos="fade-left">
+          <span class="section-badge">About Us</span>
+          <h2 class="section-title">We Are Committed to Your <span class="highlight">Academic Success</span></h2>
+          <p class="about-desc">
+            Bigman Academic Services was founded with a single purpose: to help students at every level unlock their full academic potential. Our team of seasoned professionals brings together decades of combined experience across all academic disciplines.
+          </p>
+          <p class="about-desc">
+            Whether you are struggling with a tight deadline, complex research, or challenging subject matter, our experts are here to provide personalized, high-quality support that makes a real difference to your academic outcomes.
+          </p>
+
+          <div class="about-features-grid">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-user-check"></i></div>
+              <div>
+                <h4>Expert Professionals</h4>
+                <p>Master's & PhD-qualified writers and tutors</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-lock"></i></div>
+              <div>
+                <h4>100% Confidential</h4>
+                <p>Your data and identity are fully protected</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-redo"></i></div>
+              <div>
+                <h4>Free Revisions</h4>
+                <p>Unlimited revisions until you are satisfied</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-bolt"></i></div>
+              <div>
+                <h4>On-Time Delivery</h4>
+                <p>We never miss a deadline — guaranteed</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary btn-lg mt-3">
+            Get Started Today <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HOW IT WORKS (PROCESS) SECTION
+    ============================================================ -->
+    <section class="process-section section-padding" id="process">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Simple Process</span>
+          <h2 class="section-title">Get Your Academic Help in <span class="highlight">4 Easy Steps</span></h2>
+          <p class="section-desc">Our streamlined process ensures you get the help you need quickly, easily, and with no stress whatsoever.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+            <div class="process-number">01</div>
+            <div class="process-icon"><i class="fas fa-clipboard-list"></i></div>
+            <h3>Submit Your Order</h3>
+            <p>Fill out our simple order form with your assignment details, academic level, subject, and deadline.</p>
+            <div class="process-connector" aria-hidden="true"></div>
+          </div>
+          <div class="process-step" data-aos="fade-up" data-aos-delay="150">
+            <div class="process-number">02</div>
+            <div class="process-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Get Matched with an Expert</h3>
+            <p>We assign your order to the best-qualified expert who specializes in your specific subject and level.</p>
+            <div class="process-connector" aria-hidden="true"></div>
+          </div>
+          <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+            <div class="process-number">03</div>
+            <div class="process-icon"><i class="fas fa-comments"></i></div>
+            <h3>Track & Communicate</h3>
+            <p>Stay in touch with your expert throughout the process. Request updates and ask questions anytime.</p>
+            <div class="process-connector" aria-hidden="true"></div>
+          </div>
+          <div class="process-step" data-aos="fade-up" data-aos-delay="450">
+            <div class="process-number">04</div>
+            <div class="process-icon"><i class="fas fa-download"></i></div>
+            <h3>Receive & Approve</h3>
+            <p>Download your completed work, review it carefully, and request free revisions until you are 100% satisfied.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY CHOOSE US SECTION
+    ============================================================ -->
+    <section class="why-section section-padding" id="why">
+      <div class="container why-inner">
+        <div class="why-content" data-aos="fade-right">
+          <span class="section-badge">Why Bigman</span>
+          <h2 class="section-title">Why Students Choose <span class="highlight">Bigman Academic</span></h2>
+          <p>We go beyond simply delivering academic work. We invest in your growth, your understanding, and your long-term success. Here is what sets us apart from the rest.</p>
+
+          <div class="why-list">
+            <div class="why-item" data-aos="fade-right" data-aos-delay="100">
+              <div class="why-icon"><i class="fas fa-user-graduate"></i></div>
+              <div class="why-text">
+                <h4>Highly Qualified Experts</h4>
+                <p>Every expert on our team holds at minimum a Master's degree, with many holding PhDs from leading universities.</p>
+              </div>
+            </div>
+            <div class="why-item" data-aos="fade-right" data-aos-delay="200">
+              <div class="why-icon"><i class="fas fa-fingerprint"></i></div>
+              <div class="why-text">
+                <h4>100% Original, Plagiarism-Free</h4>
+                <p>Every piece of work is written from scratch and verified with advanced plagiarism-detection software.</p>
+              </div>
+            </div>
+            <div class="why-item" data-aos="fade-right" data-aos-delay="300">
+              <div class="why-icon"><i class="fas fa-headset"></i></div>
+              <div class="why-text">
+                <h4>24/7 Customer Support</h4>
+                <p>Our dedicated support team is available around the clock via chat, email, and phone to assist you at any time.</p>
+              </div>
+            </div>
+            <div class="why-item" data-aos="fade-right" data-aos-delay="400">
+              <div class="why-icon"><i class="fas fa-money-bill-wave"></i></div>
+              <div class="why-text">
+                <h4>Affordable & Transparent Pricing</h4>
+                <p>Competitive rates with no hidden fees. Special discounts for returning students and bulk orders.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-visual" data-aos="fade-left">
+          <div class="why-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Students working with Bigman Academic experts" />
+            <div class="why-stat-card" data-aos="zoom-in" data-aos-delay="400">
+              <div class="why-stat-icon"><i class="fas fa-certificate"></i></div>
+              <strong>ISO Certified</strong>
+              <span>Quality Assurance</span>
+            </div>
+          </div>
+          <!-- Circular Progress Cards -->
+          <div class="progress-cards">
+            <div class="progress-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="progress-ring" data-percent="98">
+                <svg viewBox="0 0 80 80">
+                  <circle class="ring-bg" cx="40" cy="40" r="34"/>
+                  <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+                </svg>
+                <span class="ring-label">98%</span>
+              </div>
+              <p>Satisfaction Rate</p>
+            </div>
+            <div class="progress-card" data-aos="fade-up" data-aos-delay="350">
+              <div class="progress-ring" data-percent="95">
+                <svg viewBox="0 0 80 80">
+                  <circle class="ring-bg" cx="40" cy="40" r="34"/>
+                  <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+                </svg>
+                <span class="ring-label">95%</span>
+              </div>
+              <p>On-Time Delivery</p>
+            </div>
+            <div class="progress-card" data-aos="fade-up" data-aos-delay="500">
+              <div class="progress-ring" data-percent="100">
+                <svg viewBox="0 0 80 80">
+                  <circle class="ring-bg" cx="40" cy="40" r="34"/>
+                  <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+                </svg>
+                <span class="ring-label">100%</span>
+              </div>
+              <p>Original Work</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SUBJECTS / CATEGORIES SECTION
+    ============================================================ -->
+    <section class="subjects-section section-padding" id="subjects">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Our Coverage</span>
+          <h2 class="section-title">We Cover <span class="highlight">All Subjects</span> & Disciplines</h2>
+          <p class="section-desc">No subject is too complex or too niche. Our extensive network of experts spans every academic field.</p>
+        </div>
+
+        <div class="subjects-grid">
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="subject-icon" style="--icon-color: #4f46e5;"><i class="fas fa-flask"></i></div>
+            <h4>Sciences</h4>
+            <p>Biology, Chemistry, Physics, Environmental Science</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="subject-icon" style="--icon-color: #0ea5e9;"><i class="fas fa-square-root-alt"></i></div>
+            <h4>Mathematics</h4>
+            <p>Calculus, Statistics, Algebra, Number Theory</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="subject-icon" style="--icon-color: #10b981;"><i class="fas fa-landmark"></i></div>
+            <h4>Humanities</h4>
+            <p>History, Philosophy, Literature, Linguistics</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="240">
+            <div class="subject-icon" style="--icon-color: #f59e0b;"><i class="fas fa-chart-line"></i></div>
+            <h4>Business & Economics</h4>
+            <p>Finance, Marketing, Management, Accounting</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="320">
+            <div class="subject-icon" style="--icon-color: #ef4444;"><i class="fas fa-balance-scale"></i></div>
+            <h4>Law & Legal Studies</h4>
+            <p>Contract Law, Criminal Law, International Law</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="subject-icon" style="--icon-color: #8b5cf6;"><i class="fas fa-laptop-code"></i></div>
+            <h4>Computer Science</h4>
+            <p>Programming, AI, Data Science, Networking</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="480">
+            <div class="subject-icon" style="--icon-color: #ec4899;"><i class="fas fa-heartbeat"></i></div>
+            <h4>Health & Medicine</h4>
+            <p>Nursing, Pharmacology, Psychology, Nutrition</p>
+          </div>
+          <div class="subject-card" data-aos="fade-up" data-aos-delay="560">
+            <div class="subject-icon" style="--icon-color: #14b8a6;"><i class="fas fa-globe"></i></div>
+            <h4>Social Sciences</h4>
+            <p>Sociology, Political Science, Anthropology</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS SECTION
+    ============================================================ -->
+    <section class="testimonials-section section-padding" id="testimonials">
+      <div class="section-bg-alt" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Student Stories</span>
+          <h2 class="section-title">What Our Students <span class="highlight">Say About Us</span></h2>
+          <p class="section-desc">Real experiences from real students. Join thousands of satisfied clients who achieved their academic goals with Bigman.</p>
+        </div>
+
+        <!-- Testimonials Carousel -->
+        <div class="testimonials-carousel-wrapper" data-aos="fade-up">
+          <div class="testimonials-track" id="testimonialsTrack">
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-service">Essay Writing</span>
+              </div>
+              <blockquote>"Bigman Academic Services saved my semester! I was overwhelmed with multiple deadlines and they delivered a flawless essay that earned me an A. The writer genuinely understood the topic and their communication was excellent."</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=47" alt="Sarah M." />
+                <div>
+                  <strong>Sarah M.</strong>
+                  <span>3rd Year, Business Management — UK</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-service">Dissertation Help</span>
+              </div>
+              <blockquote>"My dissertation was the most stressful thing I had ever faced. Bigman's PhD expert guided me through every chapter with patience and expertise. I passed with distinction! I cannot recommend them highly enough."</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=33" alt="James O." />
+                <div>
+                  <strong>James O.</strong>
+                  <span>Postgraduate, Psychology — Canada</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="testimonial-service">Online Tutoring</span>
+              </div>
+              <blockquote>"The online tutoring sessions completely transformed my understanding of calculus. My tutor explained everything in a way that finally made sense. My grades went from a C to an A within two months!"</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=25" alt="Aisha K." />
+                <div>
+                  <strong>Aisha K.</strong>
+                  <span>2nd Year, Engineering — USA</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-service">Research Support</span>
+              </div>
+              <blockquote>"I needed help with my literature review and the expert assigned to me was absolutely brilliant. They found sources I never would have discovered and structured everything perfectly. Fast, professional, and worth every penny."</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=60" alt="David L." />
+                <div>
+                  <strong>David L.</strong>
+                  <span>Final Year, Law — Australia</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-service">Proofreading</span>
+              </div>
+              <blockquote>"Had my thesis proofread and edited by Bigman before submission. The improvements were remarkable — clearer arguments, better flow, and zero grammatical errors. My supervisor actually commented on the quality!"</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=48" alt="Emma T." />
+                <div>
+                  <strong>Emma T.</strong>
+                  <span>Masters Student, Literature — Ireland</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-service">Math & Sciences</span>
+              </div>
+              <blockquote>"I was failing statistics and didn't know where to turn. The tutor from Bigman made complex concepts completely accessible. I ended up acing my final exam. This service genuinely changed my academic journey."</blockquote>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/50?img=15" alt="Marcus W." />
+                <div>
+                  <strong>Marcus W.</strong>
+                  <span>Undergraduate, Economics — South Africa</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-controls">
+            <button class="carousel-btn prev" id="testimonialPrev" aria-label="Previous testimonials">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <button class="carousel-btn next" id="testimonialNext" aria-label="Next testimonials">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Trust Badges Row -->
+        <div class="trust-badges" data-aos="fade-up">
+          <div class="trust-badge"><i class="fas fa-lock"></i> <span>Secure Payments</span></div>
+          <div class="trust-badge"><i class="fas fa-shield-alt"></i> <span>Money Back Guarantee</span></div>
+          <div class="trust-badge"><i class="fas fa-user-secret"></i> <span>100% Anonymous</span></div>
+          <div class="trust-badge"><i class="fas fa-check-double"></i> <span>Plagiarism Free</span></div>
+          <div class="trust-badge"><i class="fas fa-redo"></i> <span>Free Revisions</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRICING SECTION
+    ============================================================ -->
+    <section class="pricing-section section-padding" id="pricing">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Transparent Pricing</span>
+          <h2 class="section-title">Simple, Affordable <span class="highlight">Pricing Plans</span></h2>
+          <p class="section-desc">Quality academic help that fits your budget. All plans include free revisions and dedicated support.</p>
+        </div>
+
+        <div class="pricing-toggle" data-aos="fade-up">
+          <span>Standard</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="pricingToggle" />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Express <em class="save-badge">Save 10%</em></span>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="pricing-plan-name">Basic</div>
+            <div class="pricing-price">
+              <span class="currency">$</span>
+              <span class="amount standard-price">12</span>
+              <span class="amount express-price" style="display:none;">16</span>
+              <span class="per">/page</span>
+            </div>
+            <p class="pricing-desc">Perfect for undergraduate essays and short assignments</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Undergraduate level</li>
+              <li><i class="fas fa-check"></i> 7-day delivery</li>
+              <li><i class="fas fa-check"></i> 1 free revision</li>
+              <li><i class="fas fa-check"></i> Plagiarism report</li>
+              <li class="disabled"><i class="fas fa-times"></i> Priority support</li>
+              <li class="disabled"><i class="fas fa-times"></i> Expert selection</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-btn">Get Started</a>
+          </div>
+
+          <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="150">
+            <div class="pricing-popular-tag">Most Popular</div>
+            <div class="pricing-plan-name">Professional</div>
+            <div class="pricing-price">
+              <span class="currency">$</span>
+              <span class="amount standard-price">18</span>
+              <span class="amount express-price" style="display:none;">24</span>
+              <span class="per">/page</span>
+            </div>
+            <p class="pricing-desc">Ideal for Master's level work and complex research papers</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Masters level</li>
+              <li><i class="fas fa-check"></i> 3-day delivery</li>
+              <li><i class="fas fa-check"></i> 3 free revisions</li>
+              <li><i class="fas fa-check"></i> Plagiarism report</li>
+              <li><i class="fas fa-check"></i> Priority support</li>
+              <li class="disabled"><i class="fas fa-times"></i> Expert selection</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary pricing-btn">Get Started</a>
+          </div>
+
+          <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="pricing-plan-name">Premium</div>
+            <div class="pricing-price">
+              <span class="currency">$</span>
+              <span class="amount standard-price">28</span>
+              <span class="amount express-price" style="display:none;">35</span>
+              <span class="per">/page</span>
+            </div>
+            <p class="pricing-desc">For doctoral dissertations and the highest academic standards</p>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> PhD level</li>
+              <li><i class="fas fa-check"></i> 24-hour delivery</li>
+              <li><i class="fas fa-check"></i> Unlimited revisions</li>
+              <li><i class="fas fa-check"></i> Plagiarism report</li>
+              <li><i class="fas fa-check"></i> Priority support</li>
+              <li><i class="fas fa-check"></i> Expert selection</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-btn">Get Started</a>
+          </div>
+        </div>
+
+        <p class="pricing-note" data-aos="fade-up">
+          <i class="fas fa-info-circle"></i>
+          Custom quotes available for dissertations and bulk orders.
+          <a href="#contact">Contact us</a> for a personalized estimate.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA BANNER SECTION
+    ============================================================ -->
+    <section class="cta-section" id="cta" aria-label="Call to Action">
+      <div class="cta-bg-shapes" aria-hidden="true">
+        <div class="cta-shape-1"></div>
+        <div class="cta-shape-2"></div>
+      </div>
+      <div class="container cta-inner" data-aos="zoom-in">
+        <div class="cta-content">
+          <h2>Ready to Elevate Your <span>Academic Performance?</span></h2>
+          <p>Join over 5,000 students who have transformed their grades with Bigman Academic Services. Your success story starts today.</p>
+          <div class="cta-actions">
+            <a href="#contact" class="btn btn-white btn-lg">
+              <i class="fas fa-paper-plane"></i> Place Your Order
+            </a>
+            <a href="tel:+1234567890" class="btn btn-outline-white btn-lg">
+              <i class="fas fa-phone"></i> Call Us Now
+            </a>
+          </div>
+        </div>
+        <div class="cta-visual" aria-hidden="true">
+          <div class="cta-icon-cluster">
+            <div class="cta-ico"><i class="fas fa-star"></i></div>
+            <div class="cta-ico"><i class="fas fa-trophy"></i></div>
+            <div class="cta-ico"><i class="fas fa-graduation-cap"></i></div>
+            <div class="cta-ico"><i class="fas fa-award"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+    ============================================================ -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Get In Touch</span>
+          <h2 class="section-title">Start Your Order or <span class="highlight">Ask a Question</span></h2>
+          <p class="section-desc">Our friendly team is standing by 24/7 to answer your questions and help you place your first order.</p>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- Contact Info -->
+          <div class="contact-info" data-aos="fade-right">
+            <h3>Contact Information</h3>
+            <p>Reach out through any channel that works best for you. We typically respond within 15 minutes.</p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <strong>Email Us</strong>
+                  <a href="mailto:support@bigmanacademicservices.com">support@bigmanacademicservices.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <strong>Call / WhatsApp</strong>
+                  <a href="tel:+1234567890">+1 (234) 567-890</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                  <strong>WhatsApp Chat</strong>
+                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener">Message us on WhatsApp</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                  <strong>Support Hours</strong>
+                  <span>24 hours a day, 7 days a week</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper" data-aos="fade-left">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Your first name" required />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Your last name" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="service">Service Required *</label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service...</option>
+                  <option>Essay Writing</option>
+                  <option>Research Support</option>
+                  <option>Dissertation Help</option>
+                  <option>Online Tutoring</option>
+                  <option>Proofreading & Editing</option>
+                  <option>Math & Sciences</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="deadline">Deadline</label>
+                  <input type="date" id="deadline" name="deadline" />
+                </div>
+                <div class="form-group">
+                  <label for="pages">Number of Pages</label>
+                  <input type="number" id="pages" name="pages" placeholder="e.g. 5" min="1" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Additional Details</label>
+                <textarea id="message" name="message" placeholder="Tell us more about your assignment, subject, academic level, and any specific requirements..." rows="5"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Send Request
+              </button>
+              <div class="form-success" id="formSuccess" style="display:none;">
+                <i class="fas fa-check-circle"></i>
+                <strong>Message sent successfully!</strong> We'll get back to you within 15 minutes.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+
+        <!-- Footer Brand -->
+        <div class="footer-col footer-brand">
+          <a href="#" class="logo footer-logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="logo-text">
+              <span class="logo-main">Bigman</span>
+              <span class="logo-sub">Academic Services</span>
+            </div>
+          </a>
+          <p>Your trusted partner for academic excellence. Professional, confidential, and results-driven support for students worldwide.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Services Links -->
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Essay Writing</a></li>
+            <li><a href="#services">Research Support</a></li>
+            <li><a href="#services">Dissertation Help</a></li>
+            <li><a href="#services">Online Tutoring</a></li>
+            <li><a href="#services">Proofreading & Editing</a></li>
+            <li><a href="#services">Math & Sciences</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Student Reviews</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:support@bigmanacademicservices.com">support@bigmanacademicservices.com</a>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+1234567890">+1 (234) 567-890</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/1234567890" target="_blank">WhatsApp Support</a>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <span>Available 24/7</span>
+            </li>
+          </ul>
+          <div class="footer-newsletter">
+            <h5>Get Academic Tips</h5>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Your email address" required aria-label="Email for newsletter" />
+              <button type="submit" aria-label="Subscribe">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="currentYear"></span> Bigman Academic Services. All Rights Reserved.</p>
+        <ul class="footer-legal">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us!</span>
+  </a>
+
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>
