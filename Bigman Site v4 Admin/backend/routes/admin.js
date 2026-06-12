@@ -13,6 +13,10 @@ const { protect, adminOnly } = require('../middleware/auth');
 const { sendEmail } = require('../utils/email');
 
 const router = express.Router();
+// Test route to prove file is loaded
+router.get('/test-ping', (req, res) => {
+  res.json({ message: "Admin routes are alive!" });
+});
 
 // All admin routes require authentication + admin role
 router.use(protect, adminOnly);
