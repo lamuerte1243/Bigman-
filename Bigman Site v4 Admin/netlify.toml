@@ -42,6 +42,11 @@
   to     = "/.netlify/functions/api/:splat"
   status = 200
 
+  [[redirects]]
+  from   = "/auth/*"
+  to     = "/.netlify/functions/api/auth/:splat"
+  status = 200
+  
 # ── SPA fallback: serve index.html for any unmatched routes
 [[redirects]]
   from   = "/*"
