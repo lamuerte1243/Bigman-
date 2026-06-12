@@ -126,6 +126,7 @@ app.get('/api/health', (req, res) => {
 
 // Auth routes (with stricter rate limiting)
 app.use('/api/auth',       authLimiter, authRoutes);
+app.use('/auth',           authLimiter, authRoutes);
 
 // Public routes
 app.use('/api/orders',     ordersRoutes);
